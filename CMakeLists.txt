@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
+
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        CACHE STRING "Vcpkg toolchain file")
+
 project(ObjectTracker)
 
 set(CMAKE_CXX_STANDARD 17)

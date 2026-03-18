@@ -1,0 +1,17 @@
+{
+  "name": "object-tracker",
+  "version": "0.1.0",
+  "dependencies": [
+    {
+      "name": "opencv4",
+      "default-features": false,
+      "features": [
+        "contrib",
+        "highgui",
+        "dnn",
+        "jpeg",
+        "png"
+      ]
+    }
+  ]
+}
