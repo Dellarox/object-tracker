@@ -10,7 +10,8 @@
         "highgui",
         "dnn",
         "jpeg",
-        "png"
+        "png",
+        "gtk"
       ]
     }
   ]

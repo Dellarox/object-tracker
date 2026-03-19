@@ -1,8 +1,20 @@
 #include <iostream>
-#include <opencv2/opencv.hpp>
+
+#include "Camera.hpp"
+
+constexpr int CAMERA_DEVICE_NUMBER = 0;
 
 int main()
 {
-    std::cout << "OpenCV version: " <<  CV_VERSION << std::endl;
+    try
+    {
+        Camera camera(CAMERA_DEVICE_NUMBER);
+        camera.showFrames();
+    }
+    catch (const std::runtime_error& e)
+    {
+        std::cout << "Caught runtime error: " << e.what() << std::endl;
+    }
+
     return 0;
 }
