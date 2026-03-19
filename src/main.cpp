@@ -1,38 +1,19 @@
 #include <iostream>
-#include <opencv2/opencv.hpp>
-#include <opencv2/core.hpp>
-#include <opencv2/videoio.hpp>
-#include <opencv2/highgui.hpp>
+
+#include "Camera.hpp"
+
+constexpr int CAMERA_DEVICE_NUMBER = 0;
 
 int main()
 {
-    std::cout << "OpenCV version: " <<  CV_VERSION << std::endl;
-
-    cv::Mat frame;
-    cv::VideoCapture cap;
-
-    int device = 0;
-
-    cap.open(device);
-
-    if (!cap.isOpened())
+    try
     {
-        std::cout << "Failed to open camera" << std::endl;
-        return -1;
+        Camera camera(CAMERA_DEVICE_NUMBER);
+        camera.showFrames();
     }
-
-    while (true)
+    catch (const std::runtime_error& e)
     {
-        cap.read(frame);
-        if (frame.empty())
-        {
-            std::cout << "Failed to read frame" << std::endl;
-            break;
-        }
-        cv::imshow("Camera", frame);
-
-        if (cv::waitKey(1) >= 0)
-            break;
+        std::cout << "Caught runtime error: " << e.what() << std::endl;
     }
 
     return 0;
